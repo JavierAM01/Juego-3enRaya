@@ -2,26 +2,16 @@ import pygame
 
 
 class Player:
-
-    def __init__(self, game):
-        self.game = game
-        self.playing = True
-    
-    def move(self):
-        self.playing = True
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT: 
-                self.playing = False
-    
-    def reset(self):
-        pass
-
-
-class Human(Player): # 3 moves
-
-    def __init__(self, game, enviroment):
-        super().__init__(game)
+    def __init__(self, enviroment):
+        self.game = enviroment.game
         self.enviroment = enviroment
+        self.playing = True
+
+
+class Player_3moves(Player):
+
+    def __init__(self, enviroment):
+        super().__init__(enviroment)
     
     def move(self):
         self.playing = True
@@ -39,7 +29,7 @@ class Human(Player): # 3 moves
                   b.command()
               break
                     
-            # play human
+            # play
             if self.game.count_chips() < 3:
               for i in range(3):
                 for j in range(3):
@@ -59,11 +49,10 @@ class Human(Player): # 3 moves
     
 
 
-class Human(Player): # full
+class Player_FullBaoard(Player): 
 
-    def __init__(self, game, enviroment):
-        super().__init__(game)
-        self.enviroment = enviroment
+    def __init__(self, enviroment):
+        super().__init__(enviroment)
     
     def move(self):
         self.playing = True
