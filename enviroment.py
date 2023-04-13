@@ -1,8 +1,8 @@
 import pygame
-import os
+import os, time
 import numpy as np
 
-from game.game import Game
+from game import Game
 
 
 # INTERFACE TO PLAY TIC TAC TOE (IN PYGAME):
@@ -98,23 +98,17 @@ class Enviroment:
         print()
         print(f"Total games: {self.win_1+self.win_2+self.draws}\n")
         print("Number of victories for each player:")
-        print(f" - Player 1: {self.win_1}  ({np.round(100 * self.win_1 / (self.win_1+self.win_2+self.draws), 2)} %)")
-        print(f" - Player 2: {self.win_2}  ({np.round(100 * self.win_2 / (self.win_1+self.win_2+self.draws), 2)} %)")  
+        print(f" - Player O: {self.win_1}  ({np.round(100 * self.win_1 / (self.win_1+self.win_2+self.draws), 2)} %)")
+        print(f" - Player X: {self.win_2}  ({np.round(100 * self.win_2 / (self.win_1+self.win_2+self.draws), 2)} %)")  
         print(f" - Draws   : {self.draws}  ({np.round(100 * self.draws / (self.win_1+self.win_2+self.draws), 2)} %)")   
         print()
-
-
-class Play_TicTacToe(Enviroment):
-
-    def __init__(self):
-        super().__init__()
 
     def close(self):
         pygame.quit()
         self.reset()
         self.reset_counters()
 
-    def play(self, player1, player2, n):
+    def play(self, player1, player2):
         self.timer = pygame.time.Clock() 
         self.win_player1, self.win_player2 = False, False
         self.activate_finished_buttons = False
@@ -132,8 +126,11 @@ class Play_TicTacToe(Enviroment):
             else:
                 self.win_player2 = player2.move()
 
+            # update
+            self.update()
+
             # check end game
-            if (self.win_player1 or self.win_player2 or self.game.draw()):
+            if not self.activate_finished_buttons and (self.win_player1 or self.win_player2 or self.game.draw()):
                 self.counter += 1
                 self.activate_finished_buttons = True
                 if self.win_player1:
@@ -142,16 +139,6 @@ class Play_TicTacToe(Enviroment):
                     self.win_2 += 1
                 else:
                     self.draws += 1
-
-            # update
-            self.update()
-            if self.activate_finished_buttons:
-                self.reset() 
-                player1.reset()
-                player2.reset()
-            self.playing = player1.playing and player2.playing
-            if self.counter == n:
-                self.playing = False
 
         self.print_history()
 
