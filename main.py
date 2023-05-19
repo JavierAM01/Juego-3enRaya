@@ -4,9 +4,9 @@ from player import Player_3moves, Player_FullBaoard
 
 def main():
     
-    print("Chose one option:")
-    print(" 1) Play full board")
-    print(" 2) Play with only 3 chips")
+    print("Elige una opción:")
+    print(" 1) Modo clásico")
+    print(" 2) Modo de Tres Fichas")
     x = input(" > ")
 
     env = Enviroment()
