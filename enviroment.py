@@ -35,7 +35,7 @@ class Enviroment:
         self.width, self.height = 3*self.BOX_SIZE, 3*self.BOX_SIZE
 
         self.window = pygame.display.set_mode((self.width, self.height)) 
-        pygame.display.set_caption("Tres en ralla. Autor: Javier Abollado")
+        pygame.display.set_caption("Tres en raya. Autor: Javier Abollado")
 
         # board boxes
         self.boxes = [[Box(self.BOX_SIZE, i, j, self.window) for j in range(3)] for i in range(3)]
