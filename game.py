@@ -98,6 +98,7 @@ class Game:
         # else
         return False
 
+    # opción de hacer un print por pantalla del juego - para pruebas
     def print_board(self):
         print("               ")
         for i in range(3):
