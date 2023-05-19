@@ -8,3 +8,5 @@ Opciones de juego:
 
   1. Modo Clásico: Los jugadores colocan sus fichas hasta llenar todas las casillas del tablero. El objetivo es ser el primero en formar una línea de tres fichas en cualquier dirección.
   2. Modo de Tres Fichas: Los jugadores solo tienen tres fichas para colocar en el tablero. Una vez que todas las fichas estén en juego, deben mover una ficha existente a una casilla vacía en cada turno. El objetivo es formar una línea de tres fichas antes que el oponente.
+
+Para comenzar la partida ejecutar el archivo **main.py**.
